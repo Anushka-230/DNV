@@ -6,7 +6,7 @@ const {
 } = require("../controllers/attendance.controller.js");
 
 const verifyToken = require("../middleware/verifyToken.js");
-const { isTeacher, isAdminOrTeacher } = require("../middleware/isAdmin.js");
+const { isTeacher, isAdminOrTeacher } = require("../middleware/roleMiddleware.js");
 
 const router = express.Router();
 

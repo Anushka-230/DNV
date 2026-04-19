@@ -2,7 +2,7 @@ const mongoose=require("mongoose");
 
 const timetableSchema=new mongoose.Schema({
     classSubjectId:{
-        type:Schema.Types.ObjectId,
+        type:mongoose.Schema.Types.ObjectId,
         ref:"ClassSubject",
         required:true
     },
@@ -16,4 +16,4 @@ const timetableSchema=new mongoose.Schema({
 });
 
 const Timetable=mongoose.model("Timetable",timetableSchema);
-moudule.exports=Timetable;
+module.exports=Timetable;

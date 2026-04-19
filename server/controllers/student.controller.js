@@ -1,7 +1,7 @@
 const Student=require("../models/Student");
 
 //POST /api/students/
-const createStudent=(req,res)=>{
+const createStudent=async(req,res)=>{
     try{
         const student=await Student.create(req.body);
         res.status(201).json(student);
@@ -21,7 +21,7 @@ const getAllStudents=async(req,res)=>{
 }
 
 //GET /api/students/:id
-const getStudentById=(req,res)=>{
+const getStudentById=async(req,res)=>{
     try{
         const id=req.params.id;
         if ((req.user.role === "teacher" || req.user.role==="student") && req.user.id !== id) {

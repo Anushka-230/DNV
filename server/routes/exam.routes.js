@@ -7,7 +7,7 @@ const {
   deleteExam,
 } = require("../controllers/exam.controller");
 const verifyToken = require("../middleware/verifyToken");
-const { isAdmin, isAdminOrTeacher } = require("../middleware/isAdmin");
+const { isAdmin, isAdminOrTeacher } = require("../middleware/roleMiddleware");
 
 const router = express.Router();
 

@@ -1,7 +1,7 @@
 const express = require("express");
 const { register, login, getMe } = require("../controllers/auth.controller.js");
 const verifyToken = require("../middleware/verifyToken.js");
-const isAdmin = require("../middleware/roleMiddleware.js");
+const {isAdmin} = require("../middleware/roleMiddleware.js");
 
 const router = express.Router();
 

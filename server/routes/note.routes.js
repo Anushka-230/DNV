@@ -10,7 +10,7 @@ const {
   isAdmin,
   isTeacher,
   isAdminOrTeacher,
-} = require("../middleware/isAdmin");
+} = require("../middleware/roleMiddleware");
 
 const router = express.Router();
 

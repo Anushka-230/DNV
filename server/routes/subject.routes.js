@@ -9,7 +9,7 @@ const {
 } = require("../controllers/subject.controller");
 
 const verifyToken = require("../middleware/verifyToken");
-const { isAdmin } = require("../middleware/isAdmin");
+const { isAdmin } = require("../middleware/roleMiddleware");
 
 const router = express.Router();
 

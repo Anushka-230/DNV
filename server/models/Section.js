@@ -2,7 +2,7 @@ const mongoose=require("mongoose");
 
 const sectionSchema=new mongoose.Schema({
     classId:{
-        type:Schema.Types.ObjectId,
+        type:mongoose.Schema.Types.ObjectId,
         ref:"Class",
         required:true
     },
@@ -11,7 +11,7 @@ const sectionSchema=new mongoose.Schema({
         required:true,
     },
     classTeacherId:{
-        type:Schema.Types.ObjectId,
+        type:mongoose.Schema.Types.ObjectId,
         ref:"Teacher",
         required:true
     },

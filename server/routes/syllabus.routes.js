@@ -8,7 +8,7 @@ const {
 } = require("../controllers/syllabus.controller");
 
 const verifyToken = require("../middleware/verifyToken");
-const { isAdmin, isTeacher } = require("../middleware/isAdmin");
+const { isAdmin, isTeacher } = require("../middleware/roleMiddleware");
 
 const router = express.Router();
 

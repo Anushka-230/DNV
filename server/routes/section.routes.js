@@ -9,7 +9,7 @@ const {
   deleteSection,
 } = require("../controllers/section.controller");
 const verifyToken = require("../middleware/verifyToken");
-const { isAdmin } = require("../middleware/isAdmin");
+const { isAdmin } = require("../middleware/roleMiddleware");
 const router = express.Router();
 
 router.get("/class/:classId", verifyToken, getSectionsByClass);
