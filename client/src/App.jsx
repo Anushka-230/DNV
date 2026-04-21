@@ -1,121 +1,108 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
 
-function App() {
-  const [count, setCount] = useState(0)
+// layouts
+import PublicLayout    from "./layouts/PublicLayout";
+import DashboardLayout from "./layouts/DashboardLayout";
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+// guards
+import ProtectedRoute from "./components/ProtectedRoute";
+import RoleRoute      from "./components/RoleRoute";
 
-      <div className="ticks"></div>
+/* ── PUBLIC PAGES ── */
+import Home         from "./pages/Home";
+import About        from "./pages/About";
+import Gallery      from "./pages/Gallery";
+import Login        from "./pages/Login";
+import Unauthorized from "./pages/Unauthorized";
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+/* ── ADMIN PAGES ── */
+import AdminDashboard  from "./pages/admin/AdminDashboard";
+import ManageUsers     from "./pages/admin/ManageUsers";
+import ManageTeachers  from "./pages/admin/ManageTeachers";
+import ManageStudents  from "./pages/admin/ManageStudents";
+import ManageClasses   from "./pages/admin/ManageClasses";
+import ManageSubjects  from "./pages/admin/ManageSubjects";
+import AdminAttendance from "./pages/admin/AdminAttendance";
+import ManageExams     from "./pages/admin/ManageExams";
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
-}
+/* ── TEACHER PAGES ── */
+// import TeacherDashboard from "./pages/teacher/TeacherDashboard";
+// import MarkAttendance   from "./pages/teacher/MarkAttendance";
+// import MyStudents       from "./pages/teacher/MyStudents";
+// import MyTimetable      from "./pages/teacher/MyTimetable";
+// import ManageSyllabus   from "./pages/teacher/ManageSyllabus";
+// import ManageNotes      from "./pages/teacher/ManageNotes";
+// import TeacherExams     from "./pages/teacher/TeacherExams";
 
-export default App
+/* ── STUDENT PAGES ── */
+// import StudentDashboard from "./pages/student/StudentDashboard";
+// import MyAttendance     from "./pages/student/MyAttendance";
+// import StudentTimetable from "./pages/student/StudentTimetable";
+// import MySyllabus       from "./pages/student/MySyllabus";
+// import MyNotes          from "./pages/student/MyNotes";
+// import MyExams          from "./pages/student/MyExams";
+
+const App = () => (
+  <AuthProvider>
+    <BrowserRouter>
+      <Routes>
+
+        {/* ── PUBLIC ROUTES ── */}
+        <Route element={<PublicLayout />}>
+          <Route path="/"        element={<Home />} />
+          <Route path="/about"   element={<About />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/login"   element={<Login />} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
+        </Route>
+
+        {/* ── PRIVATE ROUTES ── */}
+        <Route element={<ProtectedRoute />}>
+          <Route element={<DashboardLayout />}>
+
+            {/* ADMIN */}
+            <Route element={<RoleRoute role="admin" />}>
+              <Route path="/admin/dashboard"  element={<AdminDashboard />} />
+              <Route path="/admin/users"      element={<ManageUsers />} />
+              <Route path="/admin/teachers"   element={<ManageTeachers />} />
+              <Route path="/admin/students"   element={<ManageStudents />} />
+              <Route path="/admin/classes"    element={<ManageClasses />} />
+              <Route path="/admin/subjects"   element={<ManageSubjects />} />
+              <Route path="/admin/attendance" element={<AdminAttendance />} />
+              <Route path="/admin/exams"      element={<ManageExams />} />
+            </Route>
+
+            {/* TEACHER */}
+            <Route element={<RoleRoute role="teacher" />}>
+              {/* <Route path="/teacher/dashboard"  element={<TeacherDashboard />} /> */}
+              {/* <Route path="/teacher/attendance" element={<MarkAttendance />} /> */}
+              {/* <Route path="/teacher/students"   element={<MyStudents />} /> */}
+              {/* <Route path="/teacher/timetable"  element={<MyTimetable />} /> */}
+              {/* <Route path="/teacher/syllabus"   element={<ManageSyllabus />} /> */}
+              {/* <Route path="/teacher/notes"      element={<ManageNotes />} /> */}
+              {/* <Route path="/teacher/exams"      element={<TeacherExams />} /> */}
+            </Route>
+
+            {/* STUDENT */}
+            <Route element={<RoleRoute role="student" />}>
+              {/* <Route path="/student/dashboard"  element={<StudentDashboard />} /> */}
+              {/* <Route path="/student/attendance" element={<MyAttendance />} /> */}
+              {/* <Route path="/student/timetable"  element={<StudentTimetable />} /> */}
+              {/* <Route path="/student/syllabus"   element={<MySyllabus />} /> */}
+              {/* <Route path="/student/notes"      element={<MyNotes />} /> */}
+              {/* <Route path="/student/exams"      element={<MyExams />} /> */}
+            </Route>
+
+          </Route>
+        </Route>
+
+        {/* fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+
+      </Routes>
+    </BrowserRouter>
+  </AuthProvider>
+);
+
+export default App;
