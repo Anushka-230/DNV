@@ -21,8 +21,10 @@ dotenv.config(); //load enviornment variables
 const app=express();
 
 connectDB();
-
-app.use(cors());
+app.use(cors({
+  origin:"https://dnv-5dvf.onrender.com/",
+  credentials: true
+}));
 app.use(express.json());
 
 //test route
