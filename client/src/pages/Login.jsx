@@ -3,6 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { loginUser } from "../api/index.js";
 
+import { School, AlertCircle } from "lucide-react";
+
 const Login = () => {
   const [form, setForm]         = useState({ email: "", password: "" });
   const [error, setError]       = useState("");
@@ -28,7 +30,6 @@ const Login = () => {
       const res = await loginUser(form);
       login(res.data.user, res.data.token);
 
-      // redirect based on role
       const role = res.data.user.role;
       if (role === "admin")   navigate("/admin/dashboard");
       if (role === "teacher") navigate("/teacher/dashboard");
@@ -44,10 +45,8 @@ const Login = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-md">
 
-        {/* Card */}
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
 
-          {/* Top accent bar */}
           <div className="h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-600" />
 
           <div className="px-8 py-10">
@@ -55,16 +54,18 @@ const Login = () => {
             {/* Header */}
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-50 rounded-2xl mb-4">
-                <span className="text-3xl">🏫</span>
+                <School size={28} className="text-blue-600" />
               </div>
               <h1 className="text-2xl font-bold text-gray-900">Welcome back</h1>
-              <p className="text-sm text-gray-500 mt-1">Sign in to your SchoolMS account</p>
+              <p className="text-sm text-gray-500 mt-1">
+                Sign in to your DNV account
+              </p>
             </div>
 
             {/* Error */}
             {error && (
               <div className="mb-5 flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-xl">
-                <span>⚠️</span>
+                <AlertCircle size={16} />
                 <span>{error}</span>
               </div>
             )}
@@ -72,7 +73,6 @@ const Login = () => {
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-5">
 
-              {/* Email */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
                   Email address
@@ -87,7 +87,6 @@ const Login = () => {
                 />
               </div>
 
-              {/* Password */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
                   Password
@@ -111,7 +110,6 @@ const Login = () => {
                 </div>
               </div>
 
-              {/* Submit */}
               <button
                 type="submit"
                 disabled={loading}
@@ -129,28 +127,13 @@ const Login = () => {
 
             </form>
 
-            {/* Role hint */}
-            <div className="mt-6 p-4 bg-gray-50 rounded-xl">
-              <p className="text-xs font-medium text-gray-500 mb-2">After signing in you will be taken to:</p>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  { role: "Admin",   color: "bg-purple-100 text-purple-700" },
-                  { role: "Teacher", color: "bg-green-100 text-green-700" },
-                  { role: "Student", color: "bg-blue-100 text-blue-700" },
-                ].map((r) => (
-                  <span key={r.role} className={`text-xs font-medium px-2.5 py-1 rounded-lg ${r.color}`}>
-                    {r.role} Dashboard
-                  </span>
-                ))}
-              </div>
-            </div>
-
           </div>
         </div>
 
-        {/* Back to home */}
         <p className="text-center text-sm text-gray-500 mt-6">
-          <Link to="/" className="hover:text-blue-600 transition">← Back to website</Link>
+          <Link to="/" className="hover:text-blue-600 transition">
+            ← Back to website
+          </Link>
         </p>
 
       </div>

@@ -37,7 +37,7 @@ const Gallery = () => {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">School Gallery</h1>
           <p className="text-purple-100 text-lg max-w-xl mx-auto">
-            A glimpse into life at Vidya Mandir — sports, events, labs, and everything in between.
+            A glimpse into life at Debagram Netaji Vidyalaya — sports, events, labs, and everything in between.
           </p>
         </div>
       </section>

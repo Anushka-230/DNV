@@ -27,13 +27,13 @@ import AdminAttendance from "./pages/admin/AdminAttendance";
 import ManageExams     from "./pages/admin/ManageExams";
 
 /* ── TEACHER PAGES ── */
-// import TeacherDashboard from "./pages/teacher/TeacherDashboard";
-// import MarkAttendance   from "./pages/teacher/MarkAttendance";
-// import MyStudents       from "./pages/teacher/MyStudents";
-// import MyTimetable      from "./pages/teacher/MyTimetable";
-// import ManageSyllabus   from "./pages/teacher/ManageSyllabus";
-// import ManageNotes      from "./pages/teacher/ManageNotes";
-// import TeacherExams     from "./pages/teacher/TeacherExams";
+import TeacherDashboard from "./pages/teacher/TeacherDashboard";
+import MarkAttendance   from "./pages/teacher/MarkAttendance";
+import MyStudents       from "./pages/teacher/MyStudents";
+import MyTimetable      from "./pages/teacher/MyTimetable";
+import ManageSyllabus   from "./pages/teacher/ManageSyllabus";
+import ManageNotes      from "./pages/teacher/ManageNotes";
+import TeacherExams     from "./pages/teacher/TeacherExams";
 
 /* ── STUDENT PAGES ── */
 // import StudentDashboard from "./pages/student/StudentDashboard";
@@ -75,13 +75,13 @@ const App = () => (
 
             {/* TEACHER */}
             <Route element={<RoleRoute role="teacher" />}>
-              {/* <Route path="/teacher/dashboard"  element={<TeacherDashboard />} /> */}
-              {/* <Route path="/teacher/attendance" element={<MarkAttendance />} /> */}
-              {/* <Route path="/teacher/students"   element={<MyStudents />} /> */}
-              {/* <Route path="/teacher/timetable"  element={<MyTimetable />} /> */}
-              {/* <Route path="/teacher/syllabus"   element={<ManageSyllabus />} /> */}
-              {/* <Route path="/teacher/notes"      element={<ManageNotes />} /> */}
-              {/* <Route path="/teacher/exams"      element={<TeacherExams />} /> */}
+              <Route path="/teacher/dashboard"  element={<TeacherDashboard />} />
+              <Route path="/teacher/attendance" element={<MarkAttendance />} />
+              <Route path="/teacher/students"   element={<MyStudents />} />
+              <Route path="/teacher/timetable"  element={<MyTimetable />} />
+              <Route path="/teacher/syllabus"   element={<ManageSyllabus />} />
+              <Route path="/teacher/notes"      element={<ManageNotes />} />
+              <Route path="/teacher/exams"      element={<TeacherExams />} />
             </Route>
 
             {/* STUDENT */}

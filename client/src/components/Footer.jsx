@@ -5,9 +5,9 @@ const Footer = () => (
     <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
 
       <div>
-        <h3 className="text-white font-semibold mb-3">🏫 SchoolMS</h3>
+        <h3 className="text-white font-semibold mb-3">DNV</h3>
         <p className="text-sm leading-relaxed">
-          A modern school management system for students, teachers, and admins.
+          School Website for Debagram Netaji Vidyalaya (DNV)
         </p>
       </div>
 
@@ -24,15 +24,15 @@ const Footer = () => (
       <div>
         <h3 className="text-white font-semibold mb-3">Contact</h3>
         <ul className="space-y-2 text-sm">
-          <li>📍 123 School Road, Kolkata</li>
-          <li>📞 +91 98765 43210</li>
-          <li>✉️ info@schoolms.edu.in</li>
+          <li>Debagram,Gangnapur,Nadia</li>
+          <li> +91 95643 89142</li>
+          <li> info@dnv.edu.in</li>
         </ul>
       </div>
 
     </div>
     <div className="text-center text-xs mt-8 text-gray-600">
-      © {new Date().getFullYear()} SchoolMS. All rights reserved.
+      © {new Date().getFullYear()} DNV. All rights reserved.
     </div>
   </footer>
 );

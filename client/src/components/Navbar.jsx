@@ -20,12 +20,10 @@ const Navbar = () => {
     <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
 
-        {/* Logo */}
         <Link to="/" className="text-xl font-bold text-blue-700 tracking-tight">
-          🏫 SchoolMS
+           DNV
         </Link>
 
-        {/* Nav links */}
         <div className="hidden md:flex items-center gap-6">
           {links.map((l) => (
             <Link
@@ -42,13 +40,12 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* CTA */}
         {user ? (
           <Link
             to={dashboardPath}
             className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700 transition"
           >
-            Go to Dashboard
+            Dashboard
           </Link>
         ) : (
           <Link

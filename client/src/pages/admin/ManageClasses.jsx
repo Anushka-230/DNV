@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllClasses, createClass, deleteClass, getAllSections, createSection, getSectionsByClass, getAllTeachers, updateSection } from "../../api/index.js";
 import Loader from "../../components/Loader.jsx";
+import { School } from "lucide-react";
 
 const ManageClasses = () => {
   const [classes, setClasses]       = useState([]);
@@ -168,7 +169,7 @@ const ManageClasses = () => {
           <div key={c._id} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
             <div className="flex items-center justify-between px-6 py-4 bg-gray-50 border-b border-gray-100">
               <div className="flex items-center gap-3">
-                <span className="text-xl">🏫</span>
+                <School size={20} className="text-blue-600" />
                 <div>
                   <p className="font-bold text-gray-900">{c.name}</p>
                   {c.description && <p className="text-xs text-gray-500">{c.description}</p>}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllSubjects, createSubject, deleteSubject, getAllAssignments, assignTeacher, removeAssignment, getAllSections, getAllTeachers } from "../../api/index.js";
 import Loader from "../../components/Loader.jsx";
+import { BookOpen } from "lucide-react";
 
 const ManageSubjects = () => {
   const [subjects, setSubjects]         = useState([]);
@@ -165,7 +166,7 @@ const ManageSubjects = () => {
             {subjects.map((s) => (
               <div key={s._id} className="flex items-center justify-between px-5 py-3">
                 <div className="flex items-center gap-2">
-                  <span className="text-lg">📚</span>
+                  <BookOpen size={18} className="text-blue-600" />
                   <span className="text-sm font-medium text-gray-800">{s.name}</span>
                 </div>
                 <button onClick={() => handleDeleteSubject(s._id, s.name)}
