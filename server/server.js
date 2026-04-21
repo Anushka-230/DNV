@@ -22,7 +22,7 @@ const app=express();
 
 connectDB();
 app.use(cors({
-  origin:"https://dnv-5dvf.onrender.com/",
+  origin:"https://dnv-beta.vercel.app",
   credentials: true
 }));
 app.use(express.json());
