@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 
 const team = [
-  { name: "Dr. Ramesh Gupta", role: "Principal", subject: "Physics", exp: "22 yrs" },
+  { name: "Mr.Bikash Chandra Das", role: "Principal", subject: "Chemistry", exp: "22 yrs" },
   { name: "Mrs. Sunita Sharma", role: "Vice Principal", subject: "Mathematics", exp: "18 yrs" },
   { name: "Mr. Arjun Mehta", role: "Head of Science", subject: "Chemistry", exp: "15 yrs" },
   { name: "Mrs. Priya Das", role: "Head of Commerce", subject: "Accounts", exp: "12 yrs" },
